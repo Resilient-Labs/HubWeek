@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8"> 
+	<script src="d3.js"></script>
+	<script src="d3plus.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		#bg{
+			fill:none;
+		}
+		/*text{
+			opacity: 0;
+		}*/
+		#app-screen{
+			width: 100%;
+		}
+		body{
+			overflow-x:hidden; 
+		}
+		.result-container, .spin-container{
+			width:100%;
+			text-align: center;
+			font-family: helvetica;
+			position: absolute;
+		}
+		.spin-container{
+			left: 120%;
+		}
+		.button{
+			padding: 20px;
+			color:#FFF;
+			margin: 0 auto;
+			text-align: center;
+			background-color: blue;
+			cursor: pointer;
+		}
+		#pointer{
+			content: "";
+			width:3px;
+			height: 6px;
+			/*background-color: #000;*/
+			margin:0 auto;
+
+		}
+	</style>
+</head>
+<body>
+<section id="app-screen">
+	<div class="start-game">"Welcome to the game" not showing up?</div>
+	<div class="result-container">
+		<h2></h2>
+		<p></p>
+		<div class="next-button button">Continue</div>
+	</div>
+	<div class="spin-container">
+		<h2></h2>
+		<p id="subheader"></p>
+		<p id="#data-source">Data Source:<a href="" target="_blank"></a></p>
+		<div id="pointer">v</div>
+		<div id="viz"></div>
+		<div class="spin-button button">Spin</div>
+	</div>
+</section>
+
+<script>
+	var $stats = [];
+	var $currentStat = "";
+	var $spinTime = 4000;
+
+	//loads all the stats from content.json
+	//makes each stat into a js object
+	$.ajax({
+		url: "content.json",
+		dataType: "json",
+		type: "get",
+		cache: "false",
+		success:function(data){
+			$(data.content).each(function(index, value){
+					var $statObject = {
+						stat:value.stat, 
+						oppStat:value.oppStat,
+						header:value.header,
+						subheader:value.subheader,
+						rate:value.rate,
+						resultHeader:value.resultHeader,
+						resultCopy:value.resultCopy,
+						urlText:value.urlText,
+						url:value.url,
+						yes:value.yes,
+						no:value.no
+				}
+				$stats.push($statObject);
+			});
+			$currentStat = $stats[0];
+		}
+	});
+	console.log($stats);
+
+	function resultsScreen(){
+		$('.result-container h2').html($currentStat.resultHeader);
+		$('.result-container p').html($currentStat.resultCopy);
+	}
+	function nextScreen(){
+		//Take Data from Json and put into D3 thing
+		var data = [
+    	{
+    		"value": $currentStat.rate, 
+    		"name": $currentStat.stat,
+    	},
+    	{
+    		"value": 100 - $currentStat.rate, 
+    		"name": $currentStat.oppStat,
+    	}];
+
+	  	var wheel = d3plus.viz()
+		    .container("#viz")
+		    .data(data)
+		    .type("pie")
+		    .id("name")
+		    .size("value")
+		    .draw();
+
+		$("#viz").css({transform: "rotate(0)"});
+		// var transformValue = "- + Math.round(360 * ($currentStat.rate/100))"
+		// wheel.draw().transform("r" + "-" + Math.round(360 * ($currentStat.rate/100)).toString());
+		
+	    //Rotate this shit to be normal
+	    // $("#viz").css({
+     //        transform: "rotate(-" + Math.round(360 * ($currentStat.rate/100)).toString() + "deg)"
+     //    });
+	    //REPLACE THE TEXT FOR THINGS
+	    $('.spin-container h2').html($currentStat.header);
+	    $('#subheader').html($currentStat.subheader);
+	    $('a').html($currentStat.urlText);
+	    $('a').attr("href", $currentStat.url);
+
+	    //move the spin container to off screen right
+	    //so we can slide it in from the right
+	    $('.spin-container').css("left", "120%");
+
+	    setTimeout(function(){      
+			$('.spin-container').animate({
+				left:"0"
+			}, 700)
+			$('.result-container').animate({
+				left:"-100%"
+			}, 700);
+		}, 700);
+
+
+	}
+	function spin(){
+		//Determine which path the user will go down
+		var randomNum = Math.random()*100;
+		console.log(randomNum);
+		//Do somewhere inbetween 10 to twenty spins
+		var spinNum = Math.floor(Math.random() * 10) + 20;
+		var rotationAmount = (spinNum *360) + Math.round(360 * (randomNum/100));
+		
+		animateRotate(rotationAmount);
+
+		setTimeout(function(){      
+			if (randomNum <= $currentStat.rate) {
+				//If the thing happened to you
+				nextStat(1);
+			}else{
+				nextStat(0)
+			}
+			endScreen();
+		}, $spinTime + 1000);
+	}
+	function animateRotate(d){
+    var elem = $("#viz");
+	    $({deg: 0}).animate({deg: -d}, {
+	        duration: $spinTime,
+	        //Take the amount of steps between 0 and (-d), and rotate lil bit of that each time
+	        step: function(now){
+	            elem.css({
+	                 transform: "rotate(" + now + "deg)"
+	            });
+	        }
+	    });
+	}
+	function nextStat(n){
+		//loop through the json file, find the next stat
+		//based on the "yes" and "no" properties of the current stat
+		if (n == 0){
+			$.each($stats, function(index, value){
+				if ($currentStat.yes == value.stat) {
+					$currentStat = value;
+				};
+			});
+		}else{
+			$.each($stats, function(index, value){
+				if ($currentStat.no == value.stat) {
+					$currentStat = value;
+				};
+			});
+		}
+	}
+	function endScreen(){
+		// alert ("The current stat is " + $currentStat.stat);
+
+		//move the spin container to off screen right
+	    //so we can slide it in from the right
+	    resultsScreen();
+	    $('.result-container').css("left", "120%");
+	    setTimeout(function(){      
+			$('.result-container').animate({
+				left:"0"
+			}, 700)
+			$('.spin-container').animate({
+				left:"-100%"
+			}, 700);
+		}, 700);
+		
+	}
+	$('.spin-button').click(function(){
+		spin();
+	});
+	$('.next-button').click(function(){
+		nextScreen();
+	});
+	$('.start-game').click(function(){
+		resultsScreen();
+
+	});
+	$(document).ready(function(){
+		resultsScreen();
+	});
+	
+
+
+</script>
+
+
+</body>
+</html>

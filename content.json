@@ -1,0 +1,60 @@
+{
+	"content": [
+		{
+			"stat" : "arrested",
+			"oppStat": "not arrested",
+			"header" : "Are you arrested",
+			"subheader": "Kids get arrested for ordinary stuff",
+			"rate": 50,
+			"resultHeader":"welcome to the game",
+			"resultCopy": "this is the intro copy",
+			"urlText": "URL Text",
+			"url": "google.com",
+			"yes": "yesStat",
+			"no": "noStat"
+			
+		},
+		{
+			"stat" : "yesStat",
+			"oppStat": "not yesStat",
+			"header": "Arrested",
+			"subheader": "since you were arrested",
+			"rate": 99,
+			"resultHeader":"You've been arrested",
+			"resultCopy": "sorry man, that sucks",
+			"urlText": "URL Text",
+			"url": "google.com",
+			"yes": "college",
+			"no": "arrestedAgain"
+			
+		},
+		{
+			"stat" : "noStat",
+			"oppStat": "not noStat",
+			"header": "Not arrested",
+			"subheader": "Since you weren't arrested...will you go to college?",
+			"rate": 70,
+			"resultHeader":"You were not arrested",
+			"resultCopy": "sweet, yo",
+			"urlText": "URL Text",
+			"url": "google.com",
+			"yes": "college",
+			"no": "arrestedAgain"
+			
+		},
+		{
+			"stat" : "college",
+			"oppStat": "not noStat",
+			"header": "Not arrested",
+			"subheader": "You go to college",
+			"rate": 70,
+			"resultHeader":"You were not arrested",
+			"resultCopy": "sweet, yo",
+			"urlText": "URL Text",
+			"url": "google.com",
+			"yes": "college",
+			"no": "arrestedAgain"
+			
+		}
+	]
+}
