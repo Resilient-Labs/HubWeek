@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #eee;
 }
 input,
 button,
@@ -3490,6 +3490,8 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 6px;
+  margin:0 auto;
+  width: 25%;
 }
 .btn-sm,
 .btn-group-sm > .btn {
@@ -5009,6 +5011,8 @@ a.badge:focus {
   margin-bottom: 30px;
   color: inherit;
   background-color: #eee;
+  width:50%;
+  margin-left: 25%
 }
 .jumbotron h1,
 .jumbotron .h1 {

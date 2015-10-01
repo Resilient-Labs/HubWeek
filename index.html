@@ -13,16 +13,16 @@
 <div class="container-fluid">	
 	<section id="app-screen" class="">
 		<div class="start-game">"Welcome to the game" not showing up?</div>
-		<div class="result-container">
+		<div class="result-container jumbotron">
 			<h2></h2>
 			<p></p>
 			<div class="next-button btn-primary btn-lg">Continue</div>
 		</div>
-		<div class="spin-container">
+		<div class="spin-container jumbotron">
 			<h2></h2>
 			<p id="subheader"></p>
 			<p id="#data-source">Data Source:<a href="" target="_blank"></a></p>
-			<div id="pointer">v</div>
+			<div id="pointer"><span class="glyphicon glyphicon-arrow-down"></span></div>
 			<div id="viz"></div>
 			<div class="spin-button btn btn-primary btn-lg">Spin</div>
 		</div>
@@ -124,13 +124,13 @@
 		var rotationAmount = (spinNum *360) + Math.round(360 * (randomNum/100));
 		
 		animateRotate(rotationAmount);
-
+		console.log($currentStat);
 		setTimeout(function(){      
-			if (randomNum <= $currentStat.rate) {
+			if (randomNum < $currentStat.rate) {
 				//If the thing happened to you
-				nextStat(1);
+				nextStat(0);
 			}else{
-				nextStat(0)
+				nextStat(1);
 			}
 			endScreen();
 		}, $spinTime + 1000);
@@ -150,20 +150,39 @@
 	function nextStat(n){
 		//loop through the json file, find the next stat
 		//based on the "yes" and "no" properties of the current stat
-		if (n == 0){
-			$.each($stats, function(index, value){
-				if ($currentStat.yes == value.stat) {
-					$currentStat = value;
-				};
-			});
+		if (n == 1){
+			for(i = 0; i<=$stats.length;){
+				console.log($currentStat.yes == $stats[i].stat);
+				if ($currentStat.yes == $stats[i].stat) {
+					$currentStat = $stats[i];
+					i = $stats.length + 69;
+				}else{
+					i++;
+				}
+
+			}
+
+			// $.each($stats, function(index, value){
+			// 	console.log($currentStat.yes == value.stat);
+			// 	if ($currentStat.yes == value.stat) {
+			// 		$currentStat = value;
+			// 		return true;
+			// 	};
+			// });
 		}else{
-			$.each($stats, function(index, value){
-				if ($currentStat.no == value.stat) {
-					$currentStat = value;
-				};
-			});
+				for(i = 0; i<=$stats.length;){
+				console.log($currentStat.no == $stats[i].stat);
+				if ($currentStat.no == $stats[i].stat) {
+					$currentStat = $stats[i];
+					i = $stats.length + 69;
+				}else{
+					i++;
+				}
+
+			}
+			};
 		}
-	}
+	
 	function endScreen(){
 		// alert ("The current stat is " + $currentStat.stat);
 

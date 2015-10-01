@@ -8,7 +8,7 @@
 
 }
 body{
-	overflow-x:hidden; 
+	overflow-x:hidden;
 }
 .result-container, .spin-container{
 	width:100%;
@@ -26,8 +26,7 @@ body{
 
 
 .result-container{
-	left:50%;
-	margin-left: -52px;
+	
 	text-align: center;
 	font-family: helvetica;
 	position: absolute;
@@ -42,6 +41,9 @@ body{
 
 .start-game{
 	text-align: center;
+}
+.glyphicon-arrow-down{
+	right: 5px;
 }
 
 
