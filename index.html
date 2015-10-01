@@ -6,64 +6,29 @@
 	<script src="d3.js"></script>
 	<script src="d3plus.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<style type="text/css">
-		#bg{
-			fill:none;
-		}
-		/*text{
-			opacity: 0;
-		}*/
-		#app-screen{
-			width: 100%;
-		}
-		body{
-			overflow-x:hidden; 
-		}
-		.result-container, .spin-container{
-			width:100%;
-			text-align: center;
-			font-family: helvetica;
-			position: absolute;
-		}
-		.spin-container{
-			left: 120%;
-		}
-		.button{
-			padding: 20px;
-			color:#FFF;
-			margin: 0 auto;
-			text-align: center;
-			background-color: blue;
-			cursor: pointer;
-		}
-		#pointer{
-			content: "";
-			width:3px;
-			height: 6px;
-			/*background-color: #000;*/
-			margin:0 auto;
-
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-<section id="app-screen">
-	<div class="start-game">"Welcome to the game" not showing up?</div>
-	<div class="result-container">
-		<h2></h2>
-		<p></p>
-		<div class="next-button button">Continue</div>
-	</div>
-	<div class="spin-container">
-		<h2></h2>
-		<p id="subheader"></p>
-		<p id="#data-source">Data Source:<a href="" target="_blank"></a></p>
-		<div id="pointer">v</div>
-		<div id="viz"></div>
-		<div class="spin-button button">Spin</div>
-	</div>
-</section>
-
+<div class="container-fluid">	
+	<section id="app-screen" class="">
+		<div class="start-game">
+			<h1>"Welcome to the game"<h2></div>
+		<div class="result-container">
+			<h2></h2>
+			<p></p>
+			<div class="next-button btn-primary btn-lg">Continue</div>
+		</div>
+		<div class="spin-container">
+			<h2></h2>
+			<p id="subheader"></p>
+			<p id="#data-source">Data Source:<a href="" target="_blank"></a></p>
+			<div id="pointer">v</div>
+			<div id="viz"></div>
+			<div class="spin-button btn btn-primary btn-lg">Spin</div>
+		</div>
+	</section>
+</div>
 <script>
 	var $stats = [];
 	var $currentStat = "";

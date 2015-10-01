@@ -10611,6 +10611,8 @@ print = function(type, message, style) {
     }
   } else {
     console[type]("%c" + message, style + "font-weight:200;");
+
+
   }
 };
 
@@ -14087,7 +14089,7 @@ rtl = require("../../../client/rtl.coffee");
 
 module.exports = function(align) {
   var accepted;
-  accepted = ["left", "center", "right"];
+  accepted = ["<leftInorder></leftInorder>", "center", "right"];
   if (align === false) {
     accepted.unshift(false);
   }
@@ -26380,7 +26382,7 @@ module.exports = function(vars, id, length, extras, children, depth) {
               "border-width: "+vars.data.stroke.width+"px",
               "display: inline-block",
               "height: "+size+"px",
-              "left: 0px",
+              "left: 50%",
               "position: absolute",
               "width: "+size+"px",
               "top: 0px",

@@ -1,0 +1,47 @@
+#bg{
+	fill:none;
+}
+/*text{
+	opacity: 0;
+}*/
+#app-screen{
+
+}
+body{
+	overflow-x:hidden; 
+}
+.result-container, .spin-container{
+	/*width:100%;*/
+	text-align: center;
+	font-family: helvetica;
+	position: absolute;
+
+}
+.spin-container{
+	left: 120%;
+	text-align: center;
+	font-family: helvetica;
+	position: absolute;
+}
+
+
+.result-container{
+	left:50%;
+	margin-left: -52px;
+	text-align: center;
+	font-family: helvetica;
+	position: absolute;
+}
+#pointer{
+	content: "";
+	width:3px;
+	height: 6px;
+	/*background-color: #000;*/
+	margin:0 auto;
+}
+
+.start-game{
+	text-align: center;
+}
+
+
