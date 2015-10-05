@@ -12,7 +12,7 @@
 			"url": "https://www.amacad.org/content/publications/pubContent.aspx?d=808",
 			"yes": "highschool-arrested",
 			"no": "highschool-not-arrested"
-			
+
 		},
 		{
 			"stat" : "highschool-arrested",
@@ -26,7 +26,7 @@
 			"url": "http://www.masslegalservices.org/system/files/library/H.S.ed_and_arrest_-_ct_involvement_study_by_Sweeten.pdf",
 			"yes": "college-highschool",
 			"no": "Likelihood-of-imprisonment"
-			
+
 		},
 		{
 			"stat" : "college-highschool",
@@ -35,12 +35,12 @@
 			"subheader": "You conquered the first challenge, but college is a whole new monster.",
 			"rate": 41.7,
 			"resultHeader":"Congrats, Grad!",
-			"resultCopy": "Last year, Boston Public Schools celebrated their (highest-ever) graduation rate of 66%. How did your school do?",
+			"resultCopy": "Last year, Boston Public Schools celebrated their (highest-ever) graduation rate of 66%.",
 			"urlText": "US Department of Labor",
 			"url": "http://www.bls.gov/opub/ted/2012/ted_20120405.htm",
 			"yes": "college-grad",
 			"no": "college-no-grad"
-			
+
 		},
 		{
 			"stat" : "college-grad",
@@ -54,7 +54,7 @@
 			"url": "google.com",
 			"yes": "if yes then yes then yes",
 			"no": "if yes then yes then no"
-			
+
 		},
 		{
 			"stat" : "college-no-grad",
@@ -68,7 +68,7 @@
 			"url": "google.com",
 			"yes": "if yes then yes then yes",
 			"no": "if yes then yes then no"
-			
+
 		},
 		{
 			"stat" : "Likelihood-of-imprisonment",
@@ -77,12 +77,12 @@
 			"subheader": "As a high school dropout, your likelihood of imprisonment skyrockets to 68% percent.",
 			"rate": 68,
 			"resultHeader":"High school didn't work out.",
-			"resultCopy": "Last year, Boston Public Schools celebrated their (highest-ever) graduation rate of 66%. How did your school do?",
+			"resultCopy": "Last year, Boston Public Schools celebrated their (highest-ever) graduation rate of 66%.",
 			"urlText": "American Academy of Arts and Sciences",
 			"url": "https://www.amacad.org/content/publications/pubContent.aspx?d=808",
 			"yes": "imprisonment",
 			"no": "no-imprisonment"
-			
+
 		},
 		{
 			"stat" : "imprisonment",
@@ -96,7 +96,7 @@
 			"url": "google.com",
 			"yes": "if no then yes",
 			"no": "if no then no"
-			
+
 		},
 		{
 			"stat" : "no-imprisonment",
@@ -110,7 +110,7 @@
 			"url": "google.com",
 			"yes": "if no then yes",
 			"no": "if no then no"
-			
+
 		},
 		{
 			"stat" : "highschool-not-arrested",
@@ -119,14 +119,14 @@
 			"subheader": "Since you haven't been arrested, statistically, you have a 81% likelihood of graduating high school.",
 			"rate": 70,
 			"resultHeader":"You were not arrested",
-			"resultCopy": "The same mistake is a suspension in once school, and an arrest in another.",
+			"resultCopy": "The same mistake is a suspension in one school, and an arrest in another.",
 			"urlText": "US Census Bureau",
 			"url": "http://www.census.gov/hhes/school/data/cps/historical/",
 			"yes": "college-highschool",
 			"no": "Likelihood-of-imprisonment"
-			
+
 		}
-		
-		
+
+
 	]
 }

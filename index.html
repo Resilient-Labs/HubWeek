@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<meta charset="UTF-8"> 
+	<meta charset="UTF-8">
 	<script src="d3.js"></script>
 	<script src="d3plus.js"></script>
 	<script src="js/jquery.js"></script>
@@ -27,7 +27,8 @@
 		<div id="end1" class="end-container jumbotron">
 			<h2>Brilliance is everywhere. Opportunity is not.</h2>
 			<p id="end-text">Some of us have steeper hills to climb.</p>
-			<div class="end-button btn-primary btn btn-lg">Continue</div>
+			<p>What will you do about this today?</p>
+			<!-- <div class="end-button btn-primary btn btn-lg">Continue</div> -->
 		</div>
 		<div id="end2" class="end-container jumbotron">
 			<h2>What will you do about this today?</h2>
@@ -35,7 +36,7 @@
 		<div class="spin-container jumbotron">
 			<h2></h2>
 			<p id="subheader"></p>
-			<p id="#data-source">Data Source:<a href="" target="_blank"></a></p>
+			<p id="#data-source">Data Source: <a href="" target="_blank"></a></p>
 			<div id="pointer"><span class="glyphicon glyphicon-arrow-down"></span></div>
 			<div id="viz"></div>
 			<div class="spin-button btn btn-primary btn-lg">Spin</div>
@@ -63,7 +64,7 @@
 		success:function(data){
 			$(data.content).each(function(index, value){
 					var $statObject = {
-						stat:value.stat, 
+						stat:value.stat,
 						oppStat:value.oppStat,
 						header:value.header,
 						subheader:value.subheader,
@@ -90,7 +91,7 @@
 	}
 	function endGame(){
 		console.log("ending the game");
-			setTimeout(function(){      
+			setTimeout(function(){
 						$('#end2').animate({
 							left:"0"
 						}, 700)
@@ -102,7 +103,7 @@
 	function nextScreen(){
 		//the game is over
 		if($spinCounter ==3 ){
-			setTimeout(function(){      
+			setTimeout(function(){
 			$('#end1').animate({
 				left:"0"
 			}, 700)
@@ -115,11 +116,11 @@
 			//Take Data from Json and put into D3 thing
 			var data = [
 	    	{
-	    		"value": $currentStat.rate, 
+	    		"value": $currentStat.rate,
 	    		"name": "Yes",
 	    	},
 	    	{
-	    		"value": 100 - $currentStat.rate, 
+	    		"value": 100 - $currentStat.rate,
 	    		"name": "No",
 	    	}];
 
@@ -143,7 +144,7 @@
 		    //so we can slide it in from the right
 		    $('.spin-container').css("left", "120%");
 
-		    setTimeout(function(){      
+		    setTimeout(function(){
 				$('.spin-container').animate({
 					left:"0"
 				}, 700)
@@ -163,10 +164,10 @@
 		var spinNum = Math.floor(Math.random() * 10) + 23;
 		// var spinNum = 0;
 		var rotationAmount = (spinNum * 360) + Math.round(360 * (randomNum/100));
-		
+
 		animateRotate(rotationAmount);
 		console.log($currentStat);
-		setTimeout(function(){      
+		setTimeout(function(){
 			if (randomNum <= $currentStat.rate) {
 				//If the thing happened to you
 				nextStat(0);
@@ -216,7 +217,7 @@
 			}
 			};
 		}
-	
+
 	function endScreen(){
 		// alert ("The current stat is " + $currentStat.stat);
 
@@ -225,7 +226,7 @@
 	  //   if ($spinCounter == 3){
 	  //   	endGame();
 	  //   	$('.result-container').css("left", "120%");
-		 //    setTimeout(function(){      
+		 //    setTimeout(function(){
 			// 	$('.result-container').animate({
 			// 		left:"0"
 			// 	}, 700)
@@ -238,7 +239,7 @@
 	  //   else{
 		    resultsScreen();
 		    $('.result-container').css("left", "120%");
-		    setTimeout(function(){      
+		    setTimeout(function(){
 				$('.result-container').animate({
 					left:"0"
 				}, 700)
@@ -261,8 +262,8 @@
 		resultsScreen();
 
 	});
-	
-	
+
+
 
 
 </script>
